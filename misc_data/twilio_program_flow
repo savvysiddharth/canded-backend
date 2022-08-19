@@ -1,0 +1,36 @@
+[#signup flow:]
+----------------
+
+1.user registers from wix site by filling up form:
+    name
+    mobile number
+    email
+
+2.these data are saved in cloud firestore
+    the user gets welcome sms
+    question count is set to 0 (this says how many question have been asked up until now to this user/ ID of last asked question)
+
+
+[#receive sms flow]
+-------------------
+
+1.check if this user has registered
+2.if registered
+    check if users has answered for their current question (use question count)
+      if not answered yet, create new document for it and store it
+      if already answered, append to existing answer.
+
+
+[#daily question flow]
+----------------------
+1.loop through each user in users
+    check question count of user, increment it
+    check if this new question exists
+      if exists
+        send new question, numbered same as this updated question count
+        if (question_count % 30 == 0) send MONTHLY REPORT
+      if all questions are finished, NOT SURE WHAT TO DO..
+
+[# MONTHLY REPORT flow]
+-----------------------
+
